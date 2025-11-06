@@ -1,0 +1,4516 @@
+body {
+  background: #fff;
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Raleway", sans-serif;
+  color: #545660;
+}
+/* home page background video and content section start here */
+
+/* ===== YouTube Fullscreen Fix ===== */
+.video-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    height: 100vh; /* Ensure full viewport height on mobile */
+  }
+}
+
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  border: none;
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-wrapper iframe {
+    /* height = 100 * (9/16) = 56.25 */
+    height: 56.25vw;
+    width: 100vw;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video-wrapper iframe {
+    /* width = 100 * (16/9) = 177.78 */
+    width: 177.78vh;
+    height: 100vh;
+  }
+}
+
+/* ===== Overlay Content ===== */
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; /* content toward bottom */
+  align-items: center;
+  background: rgba(0, 0, 0, 0.35); /* dark overlay */
+  padding: 120px 20px 40px 20px; /* top, sides, bottom */
+  box-sizing: border-box;
+  text-align: center;
+}
+.video-overlay .product-img {
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+.video-overlay .content {
+  text-align: center;
+  color: #fff;
+}
+.video-overlay .content h2 {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #fff;
+  font-family: 'Raleway', sans-serif;
+  margin-top: -10px;
+
+}
+.video-overlay .content p {
+  font-size: 2.5rem;
+  font-family: 'Raleway', sans-serif;
+  margin-bottom: 20px;
+  font-weight: 200;
+  justify-content: center;
+  line-height: 50px;
+}
+.video-overlay .btn {
+  margin: 5px;
+  border: 2px solid white;
+  color: white;
+  background: transparent;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 15px;
+  text-transform: uppercase;
+}
+.video-overlay .btn:hover {
+  background: white;
+  color: #9e8844;
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+  .video-overlay {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    height: 100%; /* Full height coverage */
+  }
+  .video-overlay .product-img {
+    max-width: 200px;
+    margin-bottom: 15px;
+  }
+  .video-overlay .content h2 {
+    font-size: 2rem;
+  }
+  .video-overlay .content p {
+    font-size: 1rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .overlay-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .product-img {
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+  .content h2 {
+    font-size: 1.8rem;
+  }
+  .content p {
+    font-size: 1.8rem;
+  }
+}
+/* home page background video and content section end here */
+
+
+/* ////////////////////////Header start//////////////////////////// */
+/* ===== Logo ===== */
+.logo img {
+  max-height: 100px;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  transition: all 0.3s ease-in-out;
+}
+.sticky-header.sticky-active .logo img {
+  max-height: 70px;
+}
+
+/* ===== Top Bar ===== */
+.top-bar {
+  background: rgba(255, 255, 255, 0.9);
+  border-bottom: 2px solid #9e8844;
+  font-size: 13px; /* smaller default on desktop */
+  color: #9e8844;
+  font-weight: 500;
+  padding: 0px 0; /* reduced height */
+  transition: all 0.3s ease-in-out;
+}
+.top-bar a {
+  color: #9e8844;
+  margin-right: 15px;
+  text-decoration: none;
+  transition: color 0.5s;
+}
+.top-bar a:hover {
+  color: #d6bc6b;
+}
+
+/* Shrink top-bar on scroll */
+.sticky-header.sticky-active .top-bar {
+  padding: 4px 0;
+  font-size: 13px;
+}
+@media (min-width: 992px) {
+  /* Hide top-bar completely only on desktop */
+  .sticky-header.sticky-active .top-bar {
+    display: none !important;
+  }
+}
+
+/* ===== Navbar Links ===== */
+.navbar-nav .nav-link {
+  position: relative;
+  color: #9e8844 !important;
+  font-weight: 500;
+  font-size: 15px;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+.nav-link.active {
+  border-bottom: 2px solid #d2b55b;
+}
+.navbar-nav .nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: #d2b55b;
+  transition: width 0.3s;
+}
+.navbar-nav .nav-link:hover::before {
+  width: 100%;
+}
+.navbar-nav .nav-link:hover {
+  color: #d2b55b !important;
+}
+
+.tinputsearch {
+  background-color: #f1f2f3;
+}
+/* ===== Search Box ===== */
+.search-box input {
+  border: none;
+  background: #f5f6f7;
+}
+.search-box button {
+  background: #9e8844;
+  border: none;
+  color: #fff;
+}
+.search-box input:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* ===== Mobile Adjustments ===== */
+@media (max-width: 991.98px) {
+  .top-bar .search-box {
+    display: none;
+  }
+  .logo img {
+    max-height: 70px;
+  }
+  .navbar-toggler {
+    border: none;
+    font-size: 1.5rem;
+    color: #9e8844;
+  }
+  .cart-icon {
+    font-size: 1.1rem;
+    color: #9e8844;
+  }
+
+  .mobile-menu {
+    background: #fff;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    z-index: 1050;
+  }
+  .mobile-menu .nav-link {
+    color: #9e8844 !important;
+    font-weight: 600;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5d7b3;
+  }
+  .mobile-menu .nav-link:hover {
+    color: #d2b55b !important;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .top-bar {
+    font-size: 16px;
+    text-align: center;
+  }
+}
+
+/* ===== Dropdown Menu ===== */
+.navbar .dropdown-menu {
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  margin-top: 0;
+  background: transparent;
+  min-width: 180px;
+}
+.navbar .dropdown-menu .dropdown-item {
+  font-size: 15px;
+  font-weight: 400;
+  color: #9e8844;
+  padding: 6px 0;
+  background: transparent;
+  white-space: nowrap;
+  border-bottom: 1px solid #e5d7b3;
+}
+.navbar .dropdown-menu .dropdown-item:hover {
+  background: transparent;
+  color: #d2b55b !important;
+}
+@media (min-width: 992px) {
+  .navbar .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .navbar .dropdown-menu .dropdown-item {
+    border-bottom: none !important;
+  }
+}
+
+/* ===== Sticky Header start ===== */
+.sticky-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1100;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Default navbar height */
+.sticky-header .navbar {
+  padding: 20px 0;
+  background: rgba(255, 255, 255, 0.85) !important;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Shrink navbar when scrolling */
+.sticky-header.sticky-active .navbar {
+  padding: 8px 0;
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+/* ===== Navbar (Desktop Default Smaller) ===== */
+@media (min-width: 992px) {
+  .sticky-header .navbar {
+    padding: 8px 0; /* smaller navbar height on desktop */
+  }
+  .logo img {
+    max-height: 70px; /* smaller logo on desktop */
+  }
+}
+
+/* ===== Navbar Shrinks More on Scroll ===== */
+.sticky-header.sticky-active .navbar {
+  padding: 4px 0; /* shrink further when scrolling */
+  background: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+.sticky-header.sticky-active .logo img {
+  max-height: 55px; /* shrink logo further */
+}
+@media (max-width: 768px) {
+  .overlay-content {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 120px; /* push content downward */
+  }
+
+  .product-img {
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .content h2 {
+    font-size: 1.8rem;
+  }
+  .content p {
+    font-size: 1rem;
+  }
+}
+@media (min-width: 992px) {
+  .navbar .dropdown:hover .dropdown-menu {
+    display: block;
+    background: rgba(227, 223, 223, 0.95); /* white background for desktop */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* subtle shadow */
+    border-radius: 6px; /* optional: rounded corners */
+  }
+
+  .navbar .dropdown-menu .dropdown-item {
+    border-bottom: none !important;
+    padding: 8px 15px;
+  }
+
+  .navbar .dropdown-menu .dropdown-item:hover {
+    background: #f8f8f8; /* light gray hover effect */
+    color: #9e8844 !important;
+  }
+}
+/* ////////////////////////Header end//////////////////////////// */
+
+/* Headings wellness product start */
+
+.flowerw-img {
+  width: 17%; /* or use max-width: 300px; */
+  height: auto; /* maintains aspect ratio */
+}
+
+/* wellness product heading////////// */
+
+.wellnessheading {
+
+   font-weight: bold;
+  /* font-weight: bolder; */
+  font-size: 2.5rem;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #9e8844; /* Gold */
+}
+
+
+
+
+/* michelle and quantum heading//////////////// */
+h2 {
+  font-weight:bold;
+  /* font-weight: bolder; */
+  font-size: 1.8rem;
+  font-family: 'Raleway', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  
+  color: #9e8844; /* Gold */
+}
+
+/* Paragraph styles michelle and quantum*/
+/* .section-text {
+    font-size: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    color: #333333; /* Golden Brown */
+    /* line-height: 1.9;
+    text-align: justify;
+  } */ 
+
+.ENGINEERED{
+    font-size: 2.5rem;
+    letter-spacing: 1px;
+    font-family: 'Raleway', sans-serif;
+    /* font-weight: 100; */
+    color: #9e8844; /* Golden Brown */
+    line-height: 1.2;
+    text-align: center;
+}
+
+/* Buttons */
+.btn-custom {
+  border: 2px solid #a2873b;
+  color: #a2873b;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 5px;
+  font-weight: 500;
+  transition: all 0.3s ease-in-out;
+}
+.btn-custom:hover {
+  background-color: #9e8844;
+  color: #fff;
+}
+/* Headings wellness product end */
+
+
+/* Decorative Big Product Image elements */
+.flower-img {
+  max-width: 120px;
+  margin-bottom: 20px;
+}
+
+/* Highlight text NATURAL ENERGIES */
+.highlight-text {
+  font-size: 2.5rem;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
+  letter-spacing: 2px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: #a2873b;
+}
+.highlight-text strong {
+  font-weight: 700;
+  color: #a2873b;
+}
+
+@media (max-width: 768px) {
+  .highlight-text {
+    font-size: 1.2rem;
+    letter-spacing: 1.2px;
+  }
+}
+/* Paragraph styles michelle and quantum*/
+.section-text {
+    font-size: 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 400;
+    color: #333333; /* Golden Brown */
+    line-height: 1.9;
+    text-align: justify;
+  }
+
+/* Images */
+.profile-img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+.product-img {
+  max-width: 250px;
+  margin-bottom: 20px;
+}
+/* card how to use phia products  */
+.how-to-use {
+  border: 2px solid #d4b253;
+  border-radius: 40px;
+  /* padding: 50px 60px; */
+  padding-left: 60px;
+  padding-right: 60px;
+  
+
+}
+
+.section-title {
+  font-size: 40px;
+  font-weight: lighter;
+  font-style: normal;
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+  color: #9e8844;
+}
+
+.step-title {
+  font-weight: bold;
+  font-size: 25px;
+  font-family: 'Raleway', sans-serif;
+  color: #d2b55b;
+  line-height: 1.2;
+  letter-spacing: 1px;
+}
+
+.step-text {
+  font-size: 20px;
+  color: #9e8844;
+  font-family: 'Raleway', sans-serif;
+  margin-top: 20px;
+}
+
+.icon {
+  position: relative;
+  display: inline-block;
+}
+
+.icon img {
+  max-width: 160px;
+  /* opacity: 0.4; */
+}
+
+.icon .number {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  color: #a8893d;
+  font-weight: 500;
+}
+/* card how to use phia products  */
+
+/* Wave for you */
+.section {
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.section img {
+  max-width: 200px;
+  margin-bottom: 10px;
+  opacity: 1; /* faded look */
+}
+
+.section h2 {
+  font-size: 8rem;
+  color: #a8903b; /* golden color */
+  font-weight: 800; /* lighter look */
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  /* margin-top: -80px; */
+  font-family: 'Raleway', sans-serif;
+}
+
+.section p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 40px;
+}
+
+.btn-outline {
+  padding: 14px 34px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: #a8903b;
+  border: 2px solid #a8903b;
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-outline:hover {
+  background: #9e8844;
+  color: #fff;
+}
+
+@media (max-width: 768px) {
+  .section h2 {
+    font-size: 1.6rem;
+  }
+  .section p {
+    font-size: 1rem;
+  }
+}
+/* spectrum start */
+
+.spectrum-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 50px;
+}
+
+.center-image {
+  width: 300px;
+  z-index: 1;
+}
+
+.energy-box {
+  position: absolute;
+  width: 220px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.energy-box h2 {
+  font-size: 28px;
+  margin: 0;
+  font-weight: 700;
+}
+
+.energy-box span {
+  font-size: 14px;
+  color: #bfa252;
+}
+
+.energy-box p {
+  font-size: 18px;
+  font-weight: 400;
+  margin: 10px 0;
+}
+
+/* Connecting Lines */
+.energy-box::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2px;
+  height: 120px; /* length of the line */
+  background: currentColor;
+  transform-origin: top center;
+  z-index: -1; /* keeps line behind the text */
+}
+
+/* Adjust angles + distance */
+.top-left::before {
+  transform: rotate(220deg) translateY(-150px);
+}
+.top-right::before {
+  transform: rotate(320deg) translateY(-150px);
+}
+.bottom-left::before {
+  transform: rotate(140deg) translateY(-150px);
+}
+.bottom-right::before {
+  transform: rotate(40deg) translateY(-150px);
+}
+.mid-left::before {
+  transform: rotate(180deg) translateY(-150px);
+}
+.mid-right::before {
+  transform: rotate(0deg) translateY(-150px);
+}
+
+/* Button colors */
+.top-left button {
+  border-color: #8cc63f;
+  color: #8cc63f;
+}
+.top-right button {
+  border-color: #3d7d6d;
+  color: #3d7d6d;
+}
+.bottom-left button {
+  border-color: #f15a29;
+  color: #f15a29;
+}
+.bottom-right button {
+  border-color: #7d5ba6;
+  color: #7d5ba6;
+}
+.mid-left button {
+  border-color: #a0522d;
+  color: #a0522d;
+}
+.mid-right button {
+  border-color: #d63384;
+  color: #d63384;
+}
+/* Botanical world cards  stat section*/
+.stats-section {
+  text-align: center;
+  padding: 20px 10px;
+  margin-top: -50px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.stats-section h2 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #9e8844; /* golden text */
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+   font-family: 'Raleway', sans-serif;
+}
+
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px;
+  justify-items: center;
+   font-family: 'Raleway', sans-serif;
+}
+
+.stat-box {
+  max-width: 160px;
+}
+
+.stat-box img {
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add smooth transition */
+}
+
+.stat-box img:hover {
+  transform: scale(1.1); /* Slight zoom-in effect */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Optional shadow on hover */
+}
+
+
+.stat-box h3 {
+  font-size: 28px;
+  color: #d2b55b; /* golden number */
+  margin: 5px 0;
+  font-weight: bold;
+  font-family: 'Raleway', sans-serif;
+}
+
+.stat-box p {
+  font-size: 14px;
+  color: #9e8844;
+  margin: 0;
+  line-height: 1.4;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Responsive tweaks */
+@media (max-width: 600px) {
+  .stat-box h3 {
+    font-size: 22px;
+  }
+  .stat-box p {
+    font-size: 13px;
+  }
+}
+/* Info Section */
+.info-section {
+  padding: 60px 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.info-section h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ab8844; /* Golden Brown */
+  letter-spacing: 1px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.button-group {
+  margin-top: 40px;
+}
+
+.custom-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  margin: 0 10px;
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #9e8844;
+  background: transparent;
+  border: 2px solid #9e8844;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-family: 'Raleway', sans-serif;
+}
+
+.custom-btn:hover {
+  background: #9e8844;
+  color: #fff;
+}
+/* Text section  */
+.section {
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.section img {
+  width: 800px; /* adjust size of flower image */
+  margin-bottom: 20px;
+}
+
+.section h2 {
+  font-size: 35px;
+  font-weight: 400;
+  letter-spacing: 3px;
+  color: #9e8844; /* golden brown text */
+  margin-bottom: 30px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.section p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #444;
+  margin-bottom: 0%;
+  font-family: 'Raleway', sans-serif;
+  /* text-align: justify; */
+}
+/* image gallery */
+.gallery {
+  display: grid;
+  /* grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); */
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 20px;
+  max-width: 700px;
+  margin: 40px auto;
+}
+
+.gallery img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.story-section {
+  display: flex;
+  justify-content: center; /* center horizontally */
+  align-items: center; /* align vertically */
+  gap: 20px; /* space between text and button */
+  margin: 40px 0;
+  margin-top: -10px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.story-section h2 {
+  font-size: 18px;
+  font-weight: medium;
+  color: #9f8852;
+  letter-spacing: 1px;
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn {
+  padding: 12px 30px;
+  border: 2px solid #9f8852;
+  background: transparent;
+  color: #9f8852;
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  font-family: 'Raleway', sans-serif;
+}
+
+.btn:hover {
+  background: #9f8852;
+  color: #fff;
+}
+
+/* =============================
+   INSTAGRAM SECTION
+   ============================= */
+/* =============================
+   MAIN STYLES
+   ============================= */
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+/* ===== SHARED STYLES ===== */
+.section-title {
+  color: #a2873b;
+  font-size: 1.3rem;
+  /* Bigger like screenshot */
+  font-weight: 700;
+  /* Bold */
+  letter-spacing: 1.5px;
+  /* Tighter spacing */
+  margin: 0 0 35px 0;
+  /* More breathing space */
+  text-align: center;
+  /* Force center */
+}
+
+/* ===== COLUMN SPACING ===== */
+@media (min-width: 992px) {
+  .instagram-column {
+    padding-right: 2.5rem;
+    padding-left: 10px;
+    /* Align grid with heading */
+  }
+
+  .ambassador-column {
+    padding-left: 2.5rem;
+  }
+}
+
+/* =============================
+   INSTAGRAM SECTION
+   ============================= */
+.profile-header {
+  gap: 20px;
+  margin-bottom: 15px;
+  /* spacing under header */
+}
+
+.profile-header .logo {
+  max-width: 100px;
+  height: auto;
+}
+
+.profile-info .username {
+  font-size: 1.8rem;
+  font-weight: 700;
+  /* Bolder */
+  color: #a2873b;
+  margin-bottom: 5px;
+  /* tighter */
+}
+
+.profile-info .stats span {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #a2873b;
+  /* Gold like heading */
+  margin-right: 30px;
+  /* More spacing */
+}
+
+hr {
+  margin: 1.5rem 0;
+  color: #e9e9e9;
+}
+
+.large-image {
+  aspect-ratio: 2/ 2;
+  /* portrait ratio like Instagram */
+}
+
+.small-image {
+  aspect-ratio: 1 / 1;
+  /* perfect square */
+}
+
+/* NEW: Apply hover to the container to trigger the image zoom */
+.large-image:hover, .small-image:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+/* --- Buttons --- */
+.btn-load {
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  color: #666;
+  background-color: #f5f5f5;
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 10px 22px;
+  letter-spacing: 1.2px;
+}
+
+.btn-follow {
+  background: #8f7532;
+  /* Darker gold */
+  color: #fff;
+  border-radius: 6px;
+  font-weight: 700;
+  border: none;
+  font-size: 0.85rem;
+  padding: 10px 22px;
+  letter-spacing: 1.2px;
+}
+
+.btn-follow i {
+  font-size: 0.9rem;
+  margin-right: 6px;
+}
+
+/* =============================
+   AMBASSADOR SECTION
+   ============================= */
+.ambassador-column .divider {
+  max-width: 280px;
+  margin-bottom: 30px;
+}
+
+.ambassador-column p {
+  font-size: 1.1rem;
+  color: #444;
+  margin-bottom: 30px;
+  text-align: center;
+  /* Center aligned */
+  line-height: 1.8;
+}
+
+.btn-ambassador {
+  border-radius: 12px;
+  /* More rounded */
+  border: 2px solid #a2873b;
+  color: #a2873b;
+  background-color: transparent;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 14px 45px;
+  /* Larger */
+  letter-spacing: 2px;
+}
+/* Instagram section end */
+
+/* ===== Salons & Spas Section ===== */
+.salons-section h3 {
+  font-size: 1.8rem;
+  color: #a2873b;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.salons-section p {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 40px;
+  font-family: 'Raleway', sans-serif;
+}
+
+.salons-section .btn-salon {
+  border-radius: 12px;
+  border: 2px solid #a2873b;
+  /* color: #a2873b; */
+  font-size: 1.1rem;
+  padding: 16px 40px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: white;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* client review section start////////////////////// */
+ .testimonial-section {
+            width: 100%;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .testimonial-section h2 {
+            font-size: 28px;
+            color: #b9a253; /* Gold color */
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+            font-weight: 500;
+            text-transform: uppercase;
+        }
+        
+        /* Swiper container needs to allow space for arrows */
+        .swiper-container {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px 60px; /* Padding on sides for arrows */
+            box-sizing: border-box;
+        }
+
+        .swiper-slide {
+            /* This ensures that the cards inside will have equal height */
+            height: auto;
+            display: flex;
+        }
+
+        .testimonial-card {
+            background: #fff;
+            width: 100%;
+            padding: 40px;
+            border-radius: 25px; /* Softer corners */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.07);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .testimonial-image {
+            height: 100px; /* Set a fixed height */
+            margin-bottom: 10px;
+        }
+
+        .testimonial-image img {
+            height: 100%;
+            width: 150px; /* Fixed width for consistency */
+            object-fit: cover; /* Ensure the image fits well */
+            border-radius: 15px; /* Rounded corners for images */
+        }
+
+        .testimonial-card h3 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #0b0f29;
+        }
+
+        /* This is the key to equal card heights */
+        .testimonial-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #555;
+            flex-grow: 1; /* Pushes author to the bottom */
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        .testimonial-card .author {
+            font-size: 14px;
+            color: #777;
+            font-weight: 500;
+        }
+        
+        .read-more {
+            color: #b9a253;
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        /* --- Custom Navigation & Pagination --- */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #b9a253 !important; /* Gold color for arrows */
+            --swiper-navigation-size: 30px; /* Make arrows smaller */
+        }
+
+        .swiper-pagination {
+            position: static; /* Let it sit naturally below the swiper */
+            margin-top: 40px; /* This creates the space you wanted */
+        }
+        
+        .swiper-pagination .swiper-pagination-bullet {
+            background: #d1d1d1;
+            opacity: 1;
+        }
+
+        .swiper-pagination .swiper-pagination-bullet-active {
+            background: #b9a253; /* Gold color for active dot */
+        }
+        
+        /* Adjustments for smaller screens */
+        @media (max-width: 767px) {
+            .swiper-container {
+                padding: 20px 15px; /* Less padding on mobile */
+            }
+            .swiper-button-next,
+            .swiper-button-prev {
+                display: none; /* Hide arrows on mobile */
+            }
+        }
+
+/* Client review end */
+
+
+/* energy-spectrum-start//////////////////// */
+/* energy-spectrum-start//////////////////// */
+ 
+.energy-spectrum-section {
+  padding: 40px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 500px;
+  overflow: hidden;
+  /* Prevent horizontal scroll on small devices */
+}
+.energy-spectrum-container {
+  position: relative;
+  margin: auto;
+}
+ 
+.spectrum-image-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+ 
+.spectrum-image-wrapper img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+ 
+/* Base style for all energy items */
+.energy-item {
+  position: absolute;
+  font-family: "Montserrat", sans-serif;
+  z-index: 5;
+}
+ 
+/* Color-specific styles */
+.focus-color {
+  color: #8cc63f;
+}
+ 
+.balance-color {
+  color: #3d7d6d;
+}
+ 
+.adventure-color {
+  color: #f15a29;
+}
+ 
+.imagination-color {
+  color: #7d5ba6;
+}
+ 
+.grounding-color {
+  color: #a0522d;
+}
+ 
+.charisma-color {
+  color: #d63384;
+}
+ 
+/* --- MOBILE FIRST STYLES (< 768px) --- */
+/* This is the default state */
+.energy-spectrum-container {
+  width: 100%;
+  height: 400px;
+  position: relative;
+  margin-top: -60px;
+}
+ 
+.spectrum-image-wrapper img {
+  width: 200px;
+}
+ 
+/* Gold line for all screen sizes - horizontal line style */
+.desktop-content .gold-line {
+  height: 2px;
+  background: #c8a870;
+  margin: 0 0 15px 0;
+  width: 100%;
+  display: block;
+  border-radius: 1px;
+}
+ 
+.energy-item .desktop-content {
+  display: none;
+  /* Hide detailed text on small mobile */
+}
+ 
+.energy-item .mobile-content {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+ 
+/* Mobile positioning - improved to avoid negative positions */
+.focus-item {
+  top: 70px;
+  left: 32%;
+  transform: translateX(-80%);
+}
+ 
+.balance-item {
+  top: 70px;
+  right: 101px;
+}
+ 
+.adventure-item {
+  top: 53%;
+  left: 35px;
+  transform: translateY(-100%);
+}
+ 
+.imagination-item {
+  top: 54%;
+  right: 32px;
+  transform: translateY(-100%);
+}
+ 
+.grounding-item {
+  bottom: 70px;
+  left: 113px;
+}
+ 
+.charisma-item {
+  bottom: 70px;
+  right: 110px;
+}
+ 
+/* Small tablets (441px - 707px) - Numbers Only View */
+@media (min-width: 441px) and (max-width: 707px) {
+  .energy-spectrum-container {
+    height: 480px;
+  }
+ 
+  .spectrum-image-wrapper img {
+    width: 270px;
+  }
+ 
+  /* Hide desktop content and show mobile content (numbers only) */
+  .energy-item .desktop-content {
+    display: none;
+  }
+ 
+  .energy-item .mobile-content {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+ 
+  /* Better positioning for the numbers */
+  .focus-item {
+    top: 66px;
+    left: 34%;
+    transform: translateX(-50%);
+  }
+ 
+  .balance-item {
+    top: 70px;
+    right: 29%;
+  }
+ 
+  .adventure-item {
+    top: 53%;
+    left: 11%;
+  }
+ 
+  .imagination-item {
+    top: 53%;
+    right: 11%;
+  }
+ 
+  .grounding-item {
+    bottom: 70px;
+    left: 30%;
+  }
+ 
+  .charisma-item {
+    bottom: 70px;
+    right: 28%;
+    left: auto;
+    transform: none;
+  }
+}
+ 
+/* Small tablets (>= 768px) */
+@media (min-width: 708px) and (max-width: 991px) {
+  .energy-spectrum-container {
+    height: 450px;
+    margin-top: 1px;
+  }
+ 
+  .spectrum-image-wrapper img {
+    width: 280px;
+  }
+ 
+  .energy-item .desktop-content {
+    display: block;
+    width: 200px;
+  }
+ 
+  .energy-item .mobile-content {
+    display: none;
+  }
+ 
+  .desktop-content h2 {
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 5px 0;
+  }
+ 
+  .desktop-content .unit {
+    font-size: 0.7rem;
+    color: #9e8844;
+    text-transform: uppercase;
+    margin-left: 5px;
+  }
+ 
+  .desktop-content p {
+    font-size: 0.8rem;
+    font-weight: 400;
+    margin: 0 0 10px 0;
+    line-height: 1.2;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+ 
+  .desktop-content .btn-energy {
+    padding: 5px 7px;
+    font-size: 0.7rem;
+    font-weight: 500;
+    border-radius: 4px;
+    background: transparent;
+    border: 1px solid;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+ 
+  /* Positioning for small tablets */
+  .focus-item {
+    top: 0;
+    left: 27%;
+    transform: translateX(-50%);
+    text-align: right;
+  }
+ 
+  .balance-item {
+    top: 2px;
+    right: 15%;
+    text-align: left;
+  }
+ 
+  .adventure-item {
+    top: 285px;
+    left: 10px;
+    text-align: right;
+  }
+ 
+  .imagination-item {
+    top: 268px;
+    right: 10px;
+    text-align: left;
+  }
+ 
+  .grounding-item {
+    bottom: -10px;
+    left: 18%;
+    text-align: right;
+  }
+ 
+  .charisma-item {
+    bottom: 0px;
+    right: 18%;
+    left: auto;
+    transform: none;
+    text-align: left;
+  }
+}
+ 
+/* --- DESKTOP & LARGE TABLET STYLES (>= 992px) --- */
+@media (min-width: 992px) {
+  /* Common styles for all desktop sizes */
+  .energy-spectrum-section {
+    min-height: 600px;
+  }
+ 
+  .energy-item .desktop-content {
+    display: block;
+  }
+ 
+  .energy-item .mobile-content {
+    display: none;
+  }
+ 
+  /* Button hover effects for all desktop sizes */
+  .desktop-content .btn-energy:hover {
+    color: white !important;
+  }
+ 
+  /* Color-specific hover backgrounds */
+  .desktop-content .btn-energy.focus-color:hover {
+    background-color: #8cc63f;
+  }
+ 
+  .desktop-content .btn-energy.balance-color:hover {
+    background-color: #3d7d6d;
+  }
+ 
+  .desktop-content .btn-energy.adventure-color:hover {
+    background-color: #f15a29;
+  }
+ 
+  .desktop-content .btn-energy.imagination-color:hover {
+    background-color: #7d5ba6;
+  }
+ 
+  .desktop-content .btn-energy.grounding-color:hover {
+    background-color: #a0522d;
+  }
+ 
+  .desktop-content .btn-energy.charisma-color:hover {
+    background-color: #d63384;
+  }
+}
+ 
+/* --- LARGE DESKTOP STYLES (>= 1364px) --- */
+@media (min-width: 1364px) {
+  .energy-spectrum-section {
+    min-height: 750px;
+  }
+ 
+  .energy-spectrum-container {
+    width: 100%;
+    max-width: 1400px;
+    height: 850px;
+    margin-top: 1px;
+  }
+ 
+  .spectrum-image-wrapper img {
+    width: 520px;
+  }
+ 
+  .desktop-content h2 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 5px 0;
+  }
+ 
+  .desktop-content .unit {
+    font-size: 1rem;
+    color: #9e8844;
+    text-transform: uppercase;
+    margin-left: 8px;
+  }
+ 
+  .desktop-content p {
+    font-size: 1.4rem;
+    font-weight: 400;
+    margin: 0 0 18px 0;
+    line-height: 1.4;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+ 
+  .desktop-content .btn-energy {
+    padding: 8px 9px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 1px;
+  }
+ 
+  /* Large Desktop positioning */
+  .focus-item {
+    top: 12px;
+    left: 30%;
+    transform: translateX(-50%);
+    width: 320px;
+    text-align: right;
+  }
+ 
+  .focus-item .desktop-content {
+    width: 280px;
+    margin: 0 auto;
+  }
+ 
+  .balance-item {
+    top: 12px;
+    right: 16%;
+    width: 320px;
+    text-align: left;
+  }
+ 
+  .balance-item .desktop-content {
+    width: 280px;
+  }
+ 
+  .adventure-item {
+    top: 515px;
+    left: 90px;
+    width: 320px;
+    text-align: right;
+  }
+ 
+  .adventure-item .desktop-content {
+    width: 280px;
+    margin-left: auto;
+  }
+ 
+  .imagination-item {
+    top: 512px;
+    right: 90px;
+    width: 320px;
+    text-align: left;
+  }
+ 
+  .imagination-item .desktop-content {
+    width: 280px;
+  }
+ 
+  .grounding-item {
+    bottom: 25px;
+    left: 17%;
+    width: 320px;
+    text-align: right;
+  }
+ 
+  .grounding-item .desktop-content {
+    width: 280px;
+    margin-left: auto;
+  }
+ 
+  .charisma-item {
+    bottom: 25px;
+    right: 16%;
+    left: auto;
+    width: 320px;
+    text-align: left;
+    transform: none;
+  }
+ 
+  .charisma-item .desktop-content {
+    width: 280px;
+  }
+}
+ 
+/* --- MEDIUM DESKTOP/TABLET STYLES (992px - 1364px) --- */
+@media (min-width: 992px) and (max-width: 1363px) {
+  .energy-spectrum-section {
+    min-height: 600px;
+  }
+ 
+  .energy-spectrum-container {
+    width: 100%;
+    max-width: 1250px;
+    height: 600px;
+    margin-top: 1px;
+  }
+ 
+  .spectrum-image-wrapper img {
+    width: 450px;
+  }
+ 
+  .energy-item .desktop-content {
+    width: 230px;
+  }
+ 
+  .desktop-content h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 0 0 5px 0;
+    display: inline-block;
+  }
+ 
+  .desktop-content .unit {
+    font-size: 0.8rem;
+    color: #9e8844;
+    text-transform: uppercase;
+    margin-left: 8px;
+  }
+ 
+  .desktop-content p {
+    font-size: 1rem;
+    font-weight: 400;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+ 
+  .desktop-content .btn-energy {
+    padding: 6px 8px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    border-radius: 5px;
+    background: transparent;
+    border: 2px solid;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    letter-spacing: 0.5px;
+  }
+ 
+  /* Medium Desktop positioning */
+  .focus-item {
+    top: 9px;
+    left: 28%;
+    transform: translateX(-50%);
+    width: 240px;
+    text-align: right;
+  }
+ 
+  .focus-item .desktop-content {
+    width: 220px;
+    margin: 0 auto;
+  }
+ 
+  .balance-item {
+    top: 6px;
+    right: 12%;
+    width: 240px;
+    text-align: left;
+  }
+ 
+  .balance-item .desktop-content {
+    width: 220px;
+  }
+ 
+  .adventure-item {
+    top: 370px;
+    left: 30px;
+    width: 240px;
+    text-align: right;
+  }
+ 
+  .adventure-item .desktop-content {
+    width: 220px;
+    margin-left: auto;
+  }
+ 
+  .imagination-item {
+    top: 350px;
+    right: 20px;
+    width: 240px;
+    text-align: left;
+  }
+ 
+  .imagination-item .desktop-content {
+    width: 220px;
+  }
+ 
+  .grounding-item {
+    bottom: 0px;
+    left: 15%;
+    width: 240px;
+    text-align: right;
+  }
+ 
+  .grounding-item .desktop-content {
+    width: 220px;
+    margin-left: auto;
+  }
+ 
+  .charisma-item {
+    bottom: 16px;
+    right: 15%;
+    left: auto;
+    transform: none;
+    width: 240px;
+    text-align: left;
+  }
+ 
+  .charisma-item .desktop-content {
+    width: 220px;
+  }
+}
+ 
+/* =============================================== */
+/* === NEW ENERGY SPECTRUM SECTION STYLES END ==== */
+/* =============================================== */
+ 
+ 
+
+/* Phia philosophy start */
+
+.image-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  opacity: 0.95; /* Slightly faded look */
+  margin-top: -150px;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.image-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  opacity: 0.9; /* Slightly faded look */
+  object-fit: cover;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+/* Center text */
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  z-index: 2;
+}
+
+/* Phia philosophy end */
+
+
+/* Footer */
+
+.phia-footer {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-top: -50px;
+}
+
+/* 
+   --- Newsletter & Divider Section ---
+*/
+/* Minimal custom CSS for newsletter form, rely on Bootstrap grid */
+.search-box .input-group {
+  width: 220px;
+  height: 6px;
+}
+.search-box .form-control {
+  border-radius: 0.5rem 0 0 0.5rem;
+  background: #f5f6f7;
+  border: 1px solid #e5d7b3;
+  font-size: 15px;
+  color: #545660;
+}
+.search-box .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #9e8844;
+}
+/* Make search button height smaller */
+.search-box .btn {
+  border-radius: 0 0.5rem 0.5rem 0;
+  border: 1px solid #9e8844;
+  color: #9e8844;
+  background: #fff;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+  height: 35px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+.search-box .btn:hover {
+  background: #9e8844;
+  color: #fff;
+}
+.newsletter-section {
+  text-align: center;
+}
+
+.newsletter-form-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  max-width: 900px;
+  margin: 0 auto 25px auto;
+}
+
+.newsletter-input {
+  flex: 1 1 0;
+  min-width: 180px;
+  max-width: 300px;
+  height: 50px;
+  font-size: 15px;
+  color: #545660;
+  background-color: #fff;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  padding: 0 18px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: "Raleway", sans-serif;
+}
+
+.newsletter-input::placeholder {
+  color: #a9a9a9;
+  opacity: 1;
+}
+
+.newsletter-input:focus {
+  border-color: #9e8844;
+  box-shadow: 0 0 0 0.2rem rgba(158, 136, 68, 0.18);
+  outline: none;
+}
+
+.newsletter-btn {
+  background: transparent;
+  border: 2px solid #9e8844;
+  color: #9e8844;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 0 32px;
+  height: 50px;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.newsletter-btn:hover {
+  background: #9e8844;
+  color: #fff;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0 10px 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: #d2b55b; /* Using a neutral light gray for dividers */
+  margin: 0 40px;
+}
+
+.divider-icon {
+  max-width: 100px;
+}
+
+.newsletter-title {
+  /* COLOR: Set heading color to Gloden (#9e8844) */
+  color: #9e8844;
+  /* font-weight: 100;  */
+  font-size: 29px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.newsletter-form .form-control {
+  height: 50px;
+  font-size: 15px;
+  margin-bottom: px;
+  color: #545660;
+  background-color: #ffffff;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form .form-control::placeholder {
+  color: #a9a9a9; /* A lighter grey for the placeholder */
+  opacity: 1;
+}
+
+.newsletter-form .form-control:focus {
+  border-color: #9e8844;
+  box-shadow: 0 0 0 0.2rem rgba(158, 136, 68, 0.25);
+  outline: 0;
+}
+
+.btn-join {
+  /* COLOR: Set button styles to use Accent color */
+  background-color: transparent;
+  border: 2px solid #9e8844;
+  color: #9e8844;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 6px;
+
+  width: 100%;
+  height: 50px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-join:hover {
+  background-color: #9e8844;
+  color: #ffffff;
+}
+
+/* 
+   --- Main Footer Links Section ---
+*/
+.phia-footer {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+/* 
+   --- Newsletter & Divider Section ---
+*/
+.newsletter-section {
+  text-align: center;
+}
+
+.newsletter-input::placeholder {
+  color: #a9a9a9;
+  opacity: 1;
+}
+
+.newsletter-input:focus {
+  border-color: #9e8844;
+  box-shadow: 0 0 0 0.2rem rgba(158, 136, 68, 0.18);
+  /* .newsletter-section and .newsletter-form-row layout styles removed for Bootstrap grid */
+  min-width: 150px;
+}
+
+.newsletter-btn:hover {
+  background: #9e8844;
+  color: #fff;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0 30px 0; /* Increased bottom margin for more space */
+}
+
+.divider-icon {
+  max-width: 170px; /* Increased size from 100px to 170px */
+  filter: drop-shadow(0 0 3px rgba(158, 136, 68, 0.3)); /* Adding subtle glow */
+  transition: all 0.3s ease; /* Smooth transition for any hover effects */
+}
+
+/* Ensure proper sizing on different screens */
+@media (max-width: 768px) {
+  .divider-icon {
+    max-width: 140px; /* Slightly smaller on mobile but still prominent */
+  }
+
+  .section-divider {
+    margin: 30px 0 25px 0; /* Adjusted margins for mobile */
+  }
+}
+
+.newsletter-title {
+  /* COLOR: Set heading color to Gloden (#9e8844) */
+  color: #9e8844;
+  /* font-weight: 100;  */
+  font-size: 29px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.newsletter-form .form-control {
+  height: 50px;
+  font-size: 15px;
+  margin-bottom: px;
+  color: #545660;
+  background-color: #ffffff;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form .form-control::placeholder {
+  color: #a9a9a9; /* A lighter grey for the placeholder */
+  opacity: 1;
+}
+
+.newsletter-form .form-control:focus {
+  border-color: #9e8844;
+  box-shadow: 0 0 0 0.2rem rgba(158, 136, 68, 0.25);
+  outline: 0;
+}
+
+.btn-join {
+  /* COLOR: Set button styles to use Accent color */
+  background-color: transparent;
+  border: 2px solid #9e8844;
+  color: #9e8844;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 6px;
+
+  width: 100%;
+  height: 50px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-join:hover {
+  background-color: #9e8844;
+  color: #ffffff;
+}
+
+/* 
+   --- Main Footer Links Section ---
+*/
+.main-footer-section {
+  padding-top: 30px;
+}
+
+.footer-logo {
+  max-width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.widget-title {
+  color: #9e8844;
+
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.footer-links,
+.footer-contact {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #d2b55b;
+}
+
+.footer-contact i {
+  color: #9e8844;
+  margin-right: 12px;
+  font-size: 16px;
+}
+
+.footer-phone-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-phone-link:hover {
+  color: #d2b55b;
+}
+.footer-email-link,
+.footer-address-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-email-link:hover,
+.footer-address-link:hover {
+  color: #d2b55b;
+}
+
+.social-icons {
+  margin-top: 25px;
+}
+
+.social-icons a {
+  color: #9e8844;
+  font-size: 18px;
+  margin-right: 18px;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #d6bc6b;
+  opacity: 1;
+}
+
+/* 
+   --- Copyright Section ---
+*/
+.copyright-section {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 0px;
+  border-top: 1px solid #e5e5e5; /* Neutral border color */
+}
+
+.copyright-section p {
+  margin: 0;
+  font-size: 14px;
+  color: #9e8844;
+}
+
+/* ===================
+  Client Review Section 2- Read more section
+   =================== */
+a {
+  color: #b9975b;
+  text-decoration: none;
+}
+a:hover {
+  color: #a3854f;
+}
+
+.main-content-area {
+  padding-right: 30px;
+}
+
+.sidebar {
+  padding-left: 30px;
+}
+
+/* Card style for main content */
+.content-box {
+  background: #ffffff;
+  border: none;
+  padding: 40px;
+  margin-bottom: 30px;
+}
+
+.post-title {
+  font-family: "Lato", sans-serif;
+  font-size: 44px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #3a3a3a;
+  line-height: 1.2;
+}
+
+.meta {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  color: #b9975b;
+  margin-bottom: 28px;
+}
+
+.meta a {
+  color: inherit;
+}
+
+/* Nav links between posts */
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+/* Comment Section Title */
+.comment-reply-title {
+  font-family: "Lato", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #3a3a3a;
+  margin-bottom: 10px;
+}
+
+.logged-in-text {
+  font-size: 15px;
+}
+
+/* Sidebar widgets */
+.widget {
+  margin-bottom: 45px;
+}
+.widget-title {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: #3a3a3a;
+}
+
+.widget-title.lowercase {
+  text-transform: lowercase;
+}
+
+.widget ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.widget ul li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.widget p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Search box with icon */
+.search-box {
+  position: relative;
+}
+.search-box input.search-field {
+  border-radius: 0;
+  font-size: 14px;
+  padding: 8px 15px;
+  border: 1px solid #e0e0e0;
+  height: 46px;
+  box-shadow: none;
+}
+.search-box input.search-field:focus {
+  border-color: #b9975b;
+}
+.search-box button.search-submit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 46px;
+  width: 46px;
+  border: none;
+  background: transparent;
+  color: #777;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* === NEW MEDIA QUERY FOR MOBILE RESPONSIVENESS ADDED HERE === */
+@media (max-width: 991.98px) {
+  .container {
+    /* Adds space on the left and right of the screen */
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .main-content-area,
+  .sidebar {
+    /* Removes horizontal padding that was for the desktop gutter */
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .sidebar {
+    /* Adds space between main content and sidebar when stacked */
+    margin-top: 40px;
+  }
+  .content-box {
+    /* Reduces padding inside the white boxes on mobile */
+    padding: 25px;
+  }
+  .post-title {
+    /* Adjusts title size for mobile */
+    font-size: 32px;
+  }
+  .comment-reply-title {
+    /* Adjusts subtitle size for mobile */
+    font-size: 24px;
+  }
+}
+
+/* Client Review page-2 end */
+
+/* =============================
+   CART BUTTON (HEADER)
+   ============================= */
+.cart-btn {
+  color: #9e8844;
+  font-weight: 600;
+}
+
+/* =============================
+   WELLNESS PRODUCTS SECTION
+   ============================= */
+.wellness-products-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* =============================
+   PRODUCT GROUP SECTION
+   ============================= */
+.product-group-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* =============================
+   HIGHLIGHT TEXT SECTION
+   ============================= */
+.highlight-text-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* =============================
+   PARTITION SECTION
+   ============================= */
+.partition-section {
+  margin-top: -50px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  padding-left: 40px;
+  padding-right: 40px;
+ 
+}
+
+
+
+/* =============================
+   WAVE FOR YOU SECTION
+   ============================= */
+.wave-for-you-section {
+  margin-top: 30px;
+}
+
+.wavee{
+  font-size: 8rem;
+  color: #a8903b; /* golden color */
+  font-weight: 800; /* lighter look */
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  margin-top: -60px;
+  font-family: 'Raleway', sans-serif;
+
+}
+
+
+/* =============================
+   SUPERCHARGED SECTION
+   ============================= */
+.supercharged-section {
+  margin-top: 10px;
+  /* font-size: 9rem; */
+}
+
+.supercharged {
+  font-size: 9rem;
+  color: #a8903b; /* golden color */
+  font-weight: lighter; /* lighter look */
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  margin-top: -60px;
+  font-family: 'Raleway', sans-serif;
+
+
+}
+
+/* =============================
+   WHO BENEFITS SECTION
+   ============================= */
+.who-benefits-section {
+  margin-top: -5px;
+}
+.who-benefits-gallery {
+  margin-top: -50px;
+}
+
+/* =============================
+   SALON SECTION
+   ============================= */
+.salon-section {
+  margin-top: -50px;
+}
+.salon-title {
+  font-size: 1.8rem;
+  color: #a2873b;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.salon-desc {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 40px;
+}
+.salon-btn {
+  border-radius: 12px;
+  border: 2px solid #a2873b;
+  font-size: 1rem;
+  padding: 10px 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+/* Home Page CSS end index.html  */
+
+
+/*  philosophy page start */
+
+.image-banner {
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* makes fade + corners neat */
+  border-top-left-radius: 30px; /* rounded top corners */
+  border-top-right-radius: 30px;
+  margin-top: -20px;
+  box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.2); /* shadow effect */
+}
+
+.image-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+}
+
+/*  bottom fade into white */
+.fade-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 100%,
+    /* fully clear at top of fade */ #fff 100% /* fully white at very bottom */
+  );
+}
+
+/* Center text */
+.banner-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-size: 3.5rem;
+  font-weight: 700;
+  text-align: center;
+  z-index: 2; /* text above fade */
+}
+
+/* Footer */
+
+.phia-footer {
+  padding-top: 30px;
+  padding-bottom: 20px;
+  margin-top: -50px;
+}
+
+/* 
+   --- Newsletter & Divider Section ---
+*/
+/* Minimal custom CSS for newsletter form, rely on Bootstrap grid */
+.search-box .input-group {
+  width: 220px;
+  height: 6px;
+}
+.search-box .form-control {
+  border-radius: 0.5rem 0 0 0.5rem;
+  background: #f5f6f7;
+  border: 1px solid #e5d7b3;
+  font-size: 15px;
+  color: #545660;
+}
+.search-box .form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #9e8844;
+}
+/* Make search button height smaller */
+.search-box .btn {
+  border-radius: 0 0.5rem 0.5rem 0;
+  border: 1px solid #9e8844;
+  color: #9e8844;
+  background: #fff;
+  font-weight: 600;
+  transition: background 0.3s, color 0.3s;
+  height: 35px;
+  padding-top: 0;
+  padding-bottom: 0;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+}
+.search-box .btn:hover {
+  background: #9e8844;
+  color: #fff;
+}
+.newsletter-section {
+  text-align: center;
+}
+
+.newsletter-form-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  max-width: 900px;
+  margin: 0 auto 25px auto;
+}
+
+.newsletter-input {
+  flex: 1 1 0;
+  min-width: 180px;
+  max-width: 300px;
+  height: 50px;
+  font-size: 15px;
+  color: #545660;
+  background-color: #fff;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  padding: 0 18px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-family: "Raleway", sans-serif;
+}
+
+.newsletter-input::placeholder {
+  color: #a9a9a9;
+  opacity: 1;
+}
+
+.newsletter-input:focus {
+  border-color: #9e8844;
+  box-shadow: 0 0 0 0.2rem rgba(158, 136, 68, 0.18);
+  outline: none;
+}
+
+.newsletter-btn {
+  background: transparent;
+  border: 2px solid #9e8844;
+  color: #9e8844;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 6px;
+  padding: 0 32px;
+  height: 50px;
+  letter-spacing: 1px;
+  transition: all 0.3s;
+  font-family: "Raleway", sans-serif;
+  cursor: pointer;
+  min-width: 150px;
+}
+
+.newsletter-btn:hover {
+  background: #9e8844;
+  color: #fff;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0 10px 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: #d2b55b; /* Using a neutral light gray for dividers */
+  margin: 0 40px;
+}
+
+.divider-icon {
+  max-width: 100px;
+}
+
+.newsletter-title {
+  /* COLOR: Set heading color to Gloden (#9e8844) */
+  color: #9e8844;
+  /* font-weight: 100;  */
+  font-size: 29px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.newsletter-form .form-control {
+  height: 50px;
+  font-size: 15px;
+  margin-bottom: px;
+  color: #545660;
+  background-color: #ffffff;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form .form-control::placeholder {
+  color: #a9a9a9; /* A lighter grey for the placeholder */
+  opacity: 1;
+}
+
+.newsletter-form .form-control:focus {
+  border-color: #9e8844;
+  box-shadow: 0 0 0 0.2rem rgba(158, 136, 68, 0.25);
+  outline: 0;
+}
+
+.btn-join {
+  /* COLOR: Set button styles to use Accent color */
+  background-color: transparent;
+  border: 2px solid #9e8844;
+  color: #9e8844;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  border-radius: 6px;
+
+  width: 100%;
+  height: 50px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-join:hover {
+  background-color: #9e8844;
+  color: #ffffff;
+}
+
+/* 
+   --- Main Footer Links Section ---
+*/
+.phia-footer {
+  padding-top: 30px;
+  padding-bottom: 20px;
+}
+
+/* 
+   --- Newsletter & Divider Section ---
+*/
+.newsletter-section {
+  text-align: center;
+}
+
+.newsletter-input::placeholder {
+  color: #a9a9a9;
+  opacity: 1;
+}
+
+.newsletter-input:focus {
+  border-color: #9e8844;
+  box-shadow: 0 0 0 0.2rem rgba(158, 136, 68, 0.18);
+  /* .newsletter-section and .newsletter-form-row layout styles removed for Bootstrap grid */
+  min-width: 150px;
+}
+
+.newsletter-btn:hover {
+  background: #9e8844;
+  color: #fff;
+}
+
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 40px 0 10px 0;
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: #d2b55b; /* Using a neutral light gray for dividers */
+  margin: 0 40px;
+}
+
+.divider-icon {
+  max-width: 100px;
+}
+
+.newsletter-title {
+  /* COLOR: Set heading color to Gloden (#9e8844) */
+  color: #9e8844;
+  /* font-weight: 100;  */
+  font-size: 29px;
+  letter-spacing: 1px;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.newsletter-form .form-control {
+  height: 50px;
+  font-size: 15px;
+  margin-bottom: px;
+  color: #545660;
+  background-color: #ffffff;
+  border: 2px solid #999999;
+  border-radius: 5px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.newsletter-form .form-control::placeholder {
+  color: #a9a9a9; /* A lighter grey for the placeholder */
+  opacity: 1;
+}
+
+.newsletter-form .form-control:focus {
+  border-color: #9e8844;
+  box-shadow: 0 0 0 0.2rem rgba(158, 136, 68, 0.25);
+  outline: 0;
+}
+
+.btn-join {
+  /* COLOR: Set button styles to use Accent color */
+  background-color: transparent;
+  border: 2px solid #9e8844;
+  color: #9e8844;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  border-radius: 6px;
+
+  width: 100%;
+  height: 50px;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-join:hover {
+  background-color: #9e8844;
+  color: #ffffff;
+}
+
+/* 
+   --- Main Footer Links Section ---
+*/
+.main-footer-section {
+  padding-top: 30px;
+}
+
+.footer-logo {
+  max-width: 150px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.widget-title {
+  color: #9e8844;
+
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.footer-links,
+.footer-contact {
+  list-style: none;
+  padding-left: 0;
+}
+
+.footer-links li,
+.footer-contact li {
+  margin-bottom: 7px;
+
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.footer-links li a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.footer-links li a:hover {
+  color: #d2b55b;
+}
+
+.footer-contact i {
+  color: #9e8844;
+  margin-right: 12px;
+  font-size: 16px;
+}
+
+.footer-phone-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-phone-link:hover {
+  color: #d2b55b;
+}
+.footer-email-link,
+.footer-address-link {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.footer-email-link:hover,
+.footer-address-link:hover {
+  color: #d2b55b;
+}
+
+.social-icons {
+  margin-top: 25px;
+}
+
+.social-icons a {
+  color: #9e8844;
+  font-size: 18px;
+  margin-right: 18px;
+  text-decoration: none;
+}
+
+.social-icons a:hover {
+  color: #d6bc6b;
+  opacity: 1;
+}
+
+/* 
+   --- Copyright Section ---
+*/
+.copyright-section {
+  text-align: center;
+  padding-top: 20px;
+  margin-top: 0px;
+  border-top: 1px solid #e5e5e5; /* Neutral border color */
+}
+
+.copyright-section p {
+  margin: 0;
+  font-size: 14px;
+  color: #9e8844;
+}
+
+/* ===================
+  Client Review Section 2- Read more section
+   =================== */
+a {
+  color: #b9975b;
+  text-decoration: none;
+}
+a:hover {
+  color: #a3854f;
+}
+
+.main-content-area {
+  padding-right: 30px;
+}
+
+.sidebar {
+  padding-left: 30px;
+}
+
+/* Card style for main content */
+.content-box {
+  background: #ffffff;
+  border: none;
+  padding: 40px;
+  margin-bottom: 30px;
+}
+
+.post-title {
+  font-family: "Lato", sans-serif;
+  font-size: 44px;
+  font-weight: 400;
+  margin-bottom: 10px;
+  color: #3a3a3a;
+  line-height: 1.2;
+}
+
+.meta {
+  font-family: "Lato", sans-serif;
+  font-size: 14px;
+  color: #b9975b;
+  margin-bottom: 28px;
+}
+
+.meta a {
+  color: inherit;
+}
+
+/* Nav links between posts */
+.nav-links {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+  font-size: 14px;
+  padding: 0 5px;
+}
+
+/* Comment Section Title */
+.comment-reply-title {
+  font-family: "Lato", sans-serif;
+  font-size: 28px;
+  font-weight: 400;
+  color: #3a3a3a;
+  margin-bottom: 10px;
+}
+
+.logged-in-text {
+  font-size: 15px;
+}
+
+/* Sidebar widgets */
+.widget {
+  margin-bottom: 45px;
+}
+.widget-title {
+  font-family: "Lato", sans-serif;
+  font-size: 20px;
+  margin-bottom: 20px;
+  font-weight: 400;
+  color: #3a3a3a;
+}
+
+.widget-title.lowercase {
+  text-transform: lowercase;
+}
+
+.widget ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+}
+.widget ul li {
+  margin-bottom: 12px;
+  line-height: 1.5;
+  font-size: 15px;
+}
+
+.widget p {
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* Search box with icon */
+.search-box {
+  position: relative;
+}
+.search-box input.search-field {
+  border-radius: 0;
+  font-size: 14px;
+  padding: 8px 15px;
+  border: 1px solid #e0e0e0;
+  height: 46px;
+  box-shadow: none;
+}
+.search-box input.search-field:focus {
+  border-color: #b9975b;
+}
+.search-box button.search-submit {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 46px;
+  width: 46px;
+  border: none;
+  background: transparent;
+  color: #777;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* === NEW MEDIA QUERY FOR MOBILE RESPONSIVENESS ADDED HERE === */
+@media (max-width: 991.98px) {
+  .container {
+    /* Adds space on the left and right of the screen */
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  .main-content-area,
+  .sidebar {
+    /* Removes horizontal padding that was for the desktop gutter */
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .sidebar {
+    /* Adds space between main content and sidebar when stacked */
+    margin-top: 40px;
+  }
+  .content-box {
+    /* Reduces padding inside the white boxes on mobile */
+    padding: 25px;
+  }
+  .post-title {
+    /* Adjusts title size for mobile */
+    font-size: 32px;
+  }
+  .comment-reply-title {
+    /* Adjusts subtitle size for mobile */
+    font-size: 24px;
+  }
+}
+
+/* Client Review page-2 end */
+
+/* =============================
+   CART BUTTON (HEADER)
+   ============================= */
+.cart-btn {
+  color: #9e8844;
+  font-weight: 600;
+}
+
+/* =============================
+   WELLNESS PRODUCTS SECTION
+   ============================= */
+.wellness-products-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* =============================
+   PRODUCT GROUP SECTION
+   ============================= */
+.product-group-section {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* =============================
+   HIGHLIGHT TEXT SECTION
+   ============================= */
+.highlight-text-section {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+  
+}
+
+/* =============================
+   PARTITION SECTION
+   ============================= */
+.partition-section {
+  margin-top: -50px;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+/* =============================
+   WAVE FOR YOU SECTION
+   ============================= */
+.wave-for-you-section {
+  margin-top: 30px;
+}
+
+/* =============================
+   SUPERCHARGED SECTION
+   ============================= */
+.supercharged-section {
+  margin-top: 10px;
+}
+
+/* =============================
+   WHO BENEFITS SECTION
+   ============================= */
+.who-benefits-section {
+  margin-top: -5px;
+}
+.who-benefits-gallery {
+  margin-top: -50px;
+}
+
+/* =============================
+   SALON SECTION
+   ============================= */
+.salon-section {
+  margin-top: -50px;
+}
+.salon-title {
+  font-size: 1.8rem;
+  color: #a2873b;
+  font-weight: 400;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+}
+.salon-desc {
+  font-size: 1.2rem;
+  color: #444;
+  margin-bottom: 40px;
+}
+.salon-btn {
+  border-radius: 12px;
+  border: 2px solid #a2873b;
+  font-size: 1rem;
+  padding: 10px 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Enery.html Page css */
+
+/* Apply Raleway font globally */
+#body-id {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.1rem; /* Base font size a little bigger */
+  line-height: 1.7; /* More readable */
+  color: #333;
+}
+
+/* Title */
+#page-title-id {
+  color: #a2873b;
+  font-size: 2rem; /* Larger heading */
+}
+
+/* Paragraphs */
+#paragraph-id {
+  font-size: 1.15rem; /* Larger than normal Bootstrap */
+  margin-bottom: 1rem;
+}
+
+/* List text */
+#list-id li {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Button styling */
+#custom-btn-id {
+  background-color: #a2873b;
+  color: white;
+  border-radius: 8px;
+  padding: 8px 30px;
+  border: none;
+  font-size: 1.1rem;
+}
+
+#custom-btn-id:hover {
+  background-color: #8b7130;
+}
+/* Energy.html Page css end */
+
+/* Company.html page CSS start///////////////////// */
+
+/* General Body Styles */
+body {
+  font-family: 'Raleway', sans-serif;
+  color: #333;
+  line-height: 1.8;
+}
+
+/* Headings */
+#main-heading {
+  text-align: center;
+  letter-spacing: 4px;
+  font-size: 50px;
+  color: #9a883e;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+#sub-heading-company,
+#sub-heading-science,
+#sub-heading-sparkle,
+#sub-heading-giving {
+  text-align: center;
+  letter-spacing: 2px;
+  color: #9a883e;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Paragraphs */
+#p-company-1,
+#p-company-2,
+#p-science-1,
+#p-science-2,
+#p-sparkle-1,
+#p-sparkle-2,
+#p-sparkle-3,
+#p-giving-quote,
+#p-giving-1,
+#p-bio-1,
+#p-bio-2,
+#p-bio-3,
+#p-bio-4 {
+  text-align: justify;
+  font-size: 17px;
+  margin-bottom: 20px;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Images */
+#img-company,
+#img-science,
+#img-giving,
+#img-bio {
+  border-radius: 0px;
+  margin-bottom: 20px;
+  width: 100%;
+  height: auto;
+}
+
+#img-science,
+#img-bio {
+  max-height: 600px;
+  object-fit: cover;
+}
+
+/* Donate Button */
+#btn-donate {
+  border: 2px solid #9a883e;
+  color: #9a883e;
+  background: transparent;
+  padding: 10px 25px;
+  font-weight: 600;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+#btn-donate:hover {
+  background: #9a883e;
+  color: #fff;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+/* Company.html page CSS end///////////////////// */
+
+/* alchemy.html page CSS start///////////////////// */
+
+body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+}
+
+#services-description {
+  text-align: justify;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Buttons */
+#btn-book,
+#btn-gift {
+  border: 2px solid #9a883e;
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #9a883e;
+  background-color: transparent;
+  transition: 0.3s ease;
+  text-transform: uppercase;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Raleway', sans-serif;
+}
+
+#btn-book:hover,
+#btn-gift:hover {
+  background: #9a883e;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Headings */
+#section-heading {
+  color: #9a883e;
+  font-weight: 300;
+  font-family: 'Raleway', sans-serif;
+}
+
+#sub-heading-services,
+#sub-heading-reviews,
+#sub-heading-gallery {
+  color: #9a883e;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+  font-weight: 600;
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .container {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+/* alchemy.html page CSS end///////////////////// */
+
+/* Blog.html page CSS start///////////////////// */
+
+/* Only affects the blog page */
+#blog-page {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  background-color: #f8f9fa;
+}
+
+/* Hero Section */
+#blog-page .hero-section {
+  font-family: 'Raleway', sans-serif;
+  background: url('Images/Phia-Salon_00003-1024x683.avif') center center / cover no-repeat;
+  height: 70vh;
+  position: relative;
+}
+
+#blog-page .hero-section .overlay {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Event Cards */
+#blog-page .event-card {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+#blog-page .event-card:hover {
+  transform: translateY(-5px);
+}
+
+#blog-page .event-img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+#blog-page .event-divider {
+  height: 3px;
+  background-color: #9e8844;
+  margin: 10px 0;
+}
+
+#blog-page .event-meta i {
+  color: #777;
+  margin-right: 5px;
+}
+
+#blog-page .event-meta {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Headings */
+#blog-page h2 {
+  color: #9e8844;
+  font-weight: 500;
+  font-size: 2.5rem;
+}
+
+#blog-page h3 {
+  color: #9e8844;
+  font-weight: 400;
+  font-size: 1.5rem;
+}
+
+/* Button */
+#blog-page .read-more-btn {
+  border: 1px solid #9e8844;
+  color: #9e8844;
+  background-color: transparent;
+  transition: 0.3s;
+}
+
+#blog-page .read-more-btn:hover {
+  background-color: #9e8844;
+  color: #fff;
+}
+
+/* Only affects the single blog post page */
+/* ===== Blog Page Styles ===== */
+#single-blog-page {
+  font-family: 'Raleway', sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 17px;
+  line-height: 1.8;
+  padding: 0;
+  margin: 0;
+}
+ 
+/* Blog Header */
+#single-blog-page .blog-title {
+  color: #9a883e;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+ 
+#single-blog-page .blog-subtitle {
+  color: #6c757d; /* muted gray */
+  font-weight: 400;
+  font-size: 1.1rem;
+}
+ 
+/* Blog Image */
+#single-blog-page img {
+  display: block;
+ 
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+  max-height: 600px;
+  width: 100%;
+}
+ 
+/* Blog Content */
+#single-blog-page .content p {
+  margin-bottom: 1rem;
+  text-align: justify;
+  font-size: 17px;
+  font-weight: 400;
+}
+ 
+/* Blog Headings inside content */
+#single-blog-page .blog-heading {
+  color: #9a883e;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+ 
+/* Button */
+#single-blog-page .btn-custom {
+  background-color: #9a883e;
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px 20px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+ 
+#single-blog-page .btn-custom:hover {
+  background-color: #7c6c2d;
+  color: #fff;
+}
+ 
+ 
+/* blog.html page CSS end///////////////////// */ 
+
+/* philosophy.html page CSS start ///////////////////// */ 
+/* =============================================== */
+/* ================================
+   PHILOSOPHY PAGE ONLY
+================================ */
+#philosophy-page {
+  font-family: 'Raleway', sans-serif;
+  background-color: #ffffff;
+  color: #333333;
+  font-size: 17px;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+/* Shared heading style */
+#philosophy-page h2.section-title {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-align: center;
+  color: #9e8844;
+   font-family: 'Raleway', sans-serif;
+}
+
+/* PHILOSOPHY heading */
+#philosophy-page h2.section-title.philosophy-title {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin-bottom: 2.5rem;
+   font-family: 'Raleway', sans-serif;
+}
+
+/* INGREDIENTS + PHI headings */
+#philosophy-page h2.section-title.sub-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+   font-family: 'Raleway', sans-serif;
+}
+
+/* Body text */
+#philosophy-page p {
+  font-size: 17px;
+  font-weight: 400;
+  color: #333333;
+  text-align: left;
+  margin-bottom: 1rem;
+   font-family: 'Raleway', sans-serif;
+}
+
+#philosophy-page .text-justify {
+  text-align: justify;
+   font-family: 'Raleway', sans-serif;
+}
+
+/* Ingredient List */
+#philosophy-page .ingredient-inline {
+  line-height: 1.8;
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+   font-family: 'Raleway', sans-serif;
+}
+
+/* Images */
+#philosophy-page .phi-img {
+  max-width: 320px;
+  height: auto;
+}
+
+/* Section spacing */
+#philosophy-page section.sub-section {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important; /* fixed missing value */
+   font-family: 'Raleway', sans-serif;
+}
+
+/* Responsive scaling */
+@media (max-width: 992px) {
+  #philosophy-page h2.section-title.philosophy-title {
+    font-size: 2.2rem;
+     font-family: 'Raleway', sans-serif;
+  }
+  #philosophy-page h2.section-title.sub-title {
+    font-size: 1.8rem;
+     font-family: 'Raleway', sans-serif;
+  }
+}
+
+@media (max-width: 576px) {
+  #philosophy-page h2.section-title.philosophy-title {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+     font-family: 'Raleway', sans-serif;
+  }
+  #philosophy-page h2.section-title.sub-title {
+    font-size: 1.3rem;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+     font-family: 'Raleway', sans-serif;
+  }
+
+  /* Text */
+  #philosophy-page p,
+  #philosophy-page .ingredient-inline {
+    font-size: 14px;
+    line-height: 1.7;
+    text-align: justify;
+     font-family: 'Raleway', sans-serif;
+  }
+
+  /* Images */
+  #philosophy-page img.img-fluid {
+    max-width: 95%;
+    margin: 0 auto;
+    display: block;
+    border-radius: 6px;
+  }
+}
+/* philosophy.html page CSS end ///////////////////// */
+
+/* Research.html page CSS start ///////////////////// */
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: "Montserrat", sans-serif;
+  line-height: 1.9; /* better readability */
+}
+
+/* Science */
+#science-title {
+  font-size: 3rem; /* bigger */
+  font-weight: 400;
+  color: #9e8844;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 0.8rem;
+}
+#science-subtitle {
+  font-size: 1.7rem; /* slightly bigger */
+  font-weight: 700;
+  color: #9e8844;
+  text-align: center;
+  margin-bottom: 2.5rem;
+  letter-spacing: 1.2px;
+}
+#science-text {
+  font-size: 1.1rem; /* increased */
+  line-height: 1.9;
+  color: #333333;
+  font-weight: 300;
+  text-align: justify;
+  margin-bottom: 1.5rem;
+  margin-top: -50px;
+}
+#science-img {
+  max-width: 80%;
+  display: block;
+  margin: 0 auto 1.5rem auto; /* spacing below image */
+}
+
+/* Discoveries */
+#discoveries-title {
+  font-size: 2.4rem; /* slightly bigger */
+  font-weight: 600;
+  color: #9e8844;
+  text-transform: uppercase;
+  text-align: center;
+  margin-bottom: 1rem;
+  letter-spacing: 2px;
+  margin-top: -50px;
+}
+#discoveries-list {
+  list-style-type: disc;
+  padding-left: 2rem;
+  font-size: 1.1rem; /* bigger */
+  line-height: 2;
+  font-weight: 300;
+  color: #333;
+  margin-bottom: 2rem;
+}
+#discoveries-section {
+  padding: 3.5rem 0;
+}
+#colorscents-img,
+#interference-img {
+  max-width: 70%;
+  height: auto;
+  margin:  0; /* spacing above and below images */
+  margin-top: -50px;
+}
+
+/* Traditional */
+#traditional-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #9e8844;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+}
+#traditional-text {
+  font-size: 1.1rem;
+  line-height: 2;
+  font-weight: 300;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 2rem;
+}
+
+/* Supercharged */
+#supercharged-title {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #9e8844;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-bottom: 2rem;
+}
+#supercharged-text {
+  font-size: 1.1rem;
+  line-height: 2;
+  font-weight: 300;
+  color: #333;
+  text-align: justify;
+  margin-bottom: 2rem;
+}
+
+/* Book */
+#book-title {
+  font-size: 2.5rem; /* bigger */
+  font-weight: 700;
+  color: #9e8844;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+#book-subtitle {
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #9e8844;
+  /* margin-bottom: 10px; */
+}
+.book-text {
+  font-size: 1.1rem;
+  line-height: 2;
+  color: #333;
+  text-align: justify;
+  /* margin-bottom: 1.5rem; */
+  
+}
+#book-img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 1.5rem;
+}
+
+/* Signature */
+#signature-img {
+  max-width: 260px;
+  margin-bottom: 1rem;
+}
+#buy-btn {
+  border: 2px solid #9e8844;
+  color: #9e8844;
+  padding: 12px 30px; /* bigger button */
+  border-radius: 12px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+#buy-btn:hover {
+  background-color: #9e8844;
+  color: #fff;
+}
+/* Research.html page CSS end ///////////////////// */
+
+/* Education Page  start///////////////////// */
+ body {
+            background-color: #fff;
+        }
+
+        .head {
+            text-align: center;
+            margin: 40px 0;
+            font-family: 'Raleway', sans-serif;
+            font-size: 40px;
+            font-weight: 400;
+            /* matches screenshot */
+            letter-spacing: 4px;
+            /* adds elegant spacing */
+            text-transform: uppercase;
+            color: #9E8844;
+            /* exact color from screenshot */
+        }
+
+
+        .video-container-yt {
+            margin-bottom: 40px;
+        }
+
+        iframe {
+            border-radius: 10px;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Education Page Footer end///////////////////// */
+
+/* ===================
+    privacypolicy page CSS start ///////////////////// */
+    /* General Body Styling */
+#body {
+  font-family: 'Raleway', sans-serif;
+  font-size: 17px;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+}
+
+/* Container */
+#container {
+  padding: 40px 15px;
+  max-width: 1140px;
+  margin: auto;
+}
+
+/* Main Heading */
+#mainHeading {
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 400;
+  margin-bottom: 15px;
+  letter-spacing: 5px;
+  font-size: 3rem;
+  color: #9a883e; /* golden brown */
+}
+
+/* Sub Heading */
+#subHeading {
+  text-align: center;
+  /* text-transform: uppercase; */
+  font-weight: 200;
+  margin-bottom: 30px;
+  letter-spacing: 4px;
+  font-size: 1.30rem;
+  color: #9a883e;
+}
+
+/* Section Headings - SAME STYLE */
+#section1, #section2, #section3, #section4,
+#section5, #section6, #section7, #section8, #section9 {
+  text-align: center;
+  /* text-transform: uppercase; */
+  font-weight: 300;
+  font-size: 1.50rem;
+  letter-spacing: 4px;
+  margin: 30px 0 20px;
+  color: #9a883e;
+}
+
+/* Paragraphs */
+#paragraph1, #paragraph2, #paragraph3, #paragraph4,
+#paragraph5, #paragraph6, #paragraph7, #paragraph8,
+#paragraph9, #paragraph10, #paragraph11, #paragraph12,
+#paragraph13, #paragraph14, #paragraph15, #paragraph16,
+#paragraph17, #paragraph18 {
+  text-align: justify;
+  margin-bottom: 15px;
+  font-size: 1rem;
+}
+
+/* Lists */
+#list1, #list2, #list3 {
+  margin: 20px 0;
+  padding-left: 20px;
+  text-align: justify;
+}
+
+/* Links inside paragraphs */
+a {
+  color: #9a883e;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive Typography */
+@media (max-width: 768px) {
+  #mainHeading {
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+  }
+  #subHeading {
+    font-size: 1.1rem;
+  }
+  #section1, #section2, #section3, #section4,
+  #section5, #section6, #section7, #section8, #section9 {
+    font-size: 1.05rem;
+  }
+  #paragraph1, #paragraph2, #paragraph3, #paragraph4,
+  #paragraph5, #paragraph6, #paragraph7, #paragraph8,
+  #paragraph9, #paragraph10, #paragraph11, #paragraph12,
+  #paragraph13, #paragraph14, #paragraph15, #paragraph16,
+  #paragraph17, #paragraph18 {
+    font-size: 0.95rem;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+  #mainHeading {
+    font-size: 1.25rem;
+  }
+  #subHeading {
+    font-size: 1rem;
+  }
+}
+/* ===================
+    privacypolicy page CSS end ///////////////////// */
+
+    /* FAQ page CSS start ///////////////////// */ 
+
+    body {
+  font-family: 'Raleway', sans-serif;
+}
+
+#faq-section {
+  padding: 40px 40px;
+}
+
+#faq-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2.5rem;
+  color: #a38e4d; /* golden color */
+  font-family: 'Raleway', sans-serif;
+}
+
+/* Accordion Buttons */
+#accordion-button-one,
+#accordion-button-two,
+#accordion-button-three,
+#accordion-button-four,
+#accordion-button-five,
+#accordion-button-six {
+  font-weight: 400;
+  color: #000000;
+  background: #fff;
+  padding: 30px;
+  font-family: 'Raleway', sans-serif;
+}
+
+#accordion-button-one:focus,
+#accordion-button-two:focus,
+#accordion-button-three:focus,
+#accordion-button-four:focus,
+#accordion-button-five:focus,
+#accordion-button-six:focus {
+  box-shadow: none;
+}
+
+#accordion-button-one::after,
+#accordion-button-two::after,
+#accordion-button-three::after,
+#accordion-button-four::after,
+#accordion-button-five::after,
+#accordion-button-six::after {
+  background-image: none;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  content: "+";
+  font-size: 35px;
+  color: #000000;
+}
+
+#accordion-button-one:not(.collapsed)::after,
+#accordion-button-two:not(.collapsed)::after,
+#accordion-button-three:not(.collapsed)::after,
+#accordion-button-four:not(.collapsed)::after,
+#accordion-button-five:not(.collapsed)::after,
+#accordion-button-six:not(.collapsed)::after {
+  content: "−"; /* minus sign */
+}
+
+/* Accordion Bodies */
+#accordion-body-one,
+#accordion-body-two,
+#accordion-body-three,
+#accordion-body-four,
+#accordion-body-five,
+#accordion-body-six {
+  color: #d2b55b;
+  background: #fff;
+  font-size: 1rem;
+  font-family: 'Raleway', sans-serif;
+  margin-left: 12px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #faq-title {
+    font-size: 0.5rem;
+  }
+  #accordion-button-one,
+  #accordion-button-two,
+  #accordion-button-three,
+  #accordion-button-four,
+  #accordion-button-five,
+  #accordion-button-six {
+    font-size: 0.7rem;
+    padding: 15px;
+  }
+}
+
+/* FAQ Footer page CSS end ///////////////////// */
+
+/* Shipping & returns page  CSS start ///////////////////// */
+body {
+    font-family: 'Raleway', sans-serif;
+    background-color: #fff;
+    color: #333;
+    line-height: 1.6;
+    margin: 40px;
+}
+
+#shipping-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+#shipping-title {
+    font-size: 2.9rem;
+    color: #9e8844; /* golden color */
+    margin-bottom: 30px;
+}
+
+#shipping-subtitle {
+    font-size: 1.5rem;
+    color: #9e8844;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+#shipping-text {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    text-align: justify;
+    font-weight: 400;
+}
+
+/* shipping & returns page footer CSS end ///////////////////// */
+
+
+/* Terms Of Use page CSS start /////////////////////  */
+
+/* Import Raleway from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@200;400;600&display=swap');
+
+/* General Body */
+.service {
+  font-family: 'Raleway', sans-serif;
+  background-color: #ffffff;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* Main Page Title (TERMS OF SERVICE) */
+.service h1 {
+  font-weight: 200;          /* thin style */
+  font-size: 2.8rem;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: #9a8844;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Sub Headings */
+.service h4 {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #9a8844;
+  text-align: center;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.service h6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #9a8844;
+  text-align: center;
+  margin-top: 1rem;
+}
+
+/* Section Headings */
+.service h5 {
+  font-weight: 600;
+  text-transform: uppercase;
+  text-align: center;
+  color: #9a8844;
+  margin: 1.5rem 0;
+  letter-spacing: 2px;
+}
+
+/* Paragraphs */
+/* Paragraphs - no extra gap */
+.service p {
+  font-size: 1rem;
+  margin-bottom: 0.2rem;   /* reduced gap, or set to 0 if you want none */
+  color: #333;
+  line-height: 1.6;        /* keeps it readable without big spacing */
+}
+
+
+/* Links */
+.service a {
+  color: #9a8844;
+  text-decoration: none;
+}
+.service a:hover {
+  text-decoration: underline;
+}
+
+/* Special styling for Section 12 (Prohibited Uses) */
+#section-12 p {
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+ 
+/* Responsive adjustments for mobile screens */
+@media (max-width: 768px) {
+  .service {
+    padding-left: 1rem;  /* left padding for mobile */
+    padding-right: 1rem; /* right padding for mobile */
+  }
+
+  .service h1 {
+    font-size: 2rem;
+    letter-spacing: 2px;
+  }
+
+  .service h4 {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .service h6 {
+    font-size: 1rem;
+    margin-top: 0.5rem;
+  }
+
+  .service h5 {
+    font-size: 1.1rem;
+    margin: 1rem 0;
+    letter-spacing: 1px;
+  }
+
+  .service p {
+    font-size: 0.95rem;
+    margin-bottom: 0.15rem;
+    line-height: 1.5;
+  }
+
+  #section-12 p {
+    font-size: 0.95rem;
+    margin-top: 1rem;
+    text-align: start;
+  }
+}
+
+/* Terms Of Use page CSS end /////////////////////  */
+
+/* Event Page CSS start /////////////////////  */
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f8f9fa;
+  margin: 0;
+  padding: 0;
+}
+
+/* Search Bar Container */
+#searchContainer-fluid {
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin: 20px auto;
+  max-width: 1200px;
+  border-radius: 8px;
+  width: 90%;
+}
+
+#searchGroup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+/* Input Group Styling */
+.input-group {
+  flex-grow: 1;
+  min-width: 0;
+}
+
+/* Apply border-right only on large screens */
+@media (min-width: 992px) {
+  .input-group:not(:last-child) {
+    border-right: 1px solid #dee2e6;
+    padding-right: 15px;
+    margin-right: 15px;
+  }
+}
+
+.input-group-text {
+  background: transparent;
+  border: none;
+  color: #6c757d;
+  font-size: 1.2rem;
+}
+
+.form-control {
+  border: none;
+  box-shadow: none;
+  font-size: 1rem;
+  height: 38px;
+  border-radius: 0;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Search Button */
+#searchButton {
+  background: #0d6efd;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  height: 38px;
+  white-space: nowrap;
+}
+
+#searchButton:hover {
+  background: #084bdb;
+}
+
+/* UPDATED: Filter Button Style */
+#filterButton {
+    border: 1px solid #dee2e6;
+    background-color: transparent;
+    color: #6c757d;
+    height: 38px;
+    width: 38px; /* Makes button square */
+    padding: 0; /* Removes padding to center icon */
+    font-size: 1.1rem;
+    border-radius: 6px;
+    /* Flex properties to center the icon */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#filterButton:hover {
+    background-color: #e9ecef;
+}
+
+/* Event Cards */
+.event-card {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-5px);
+}
+
+.event-card img {
+  width: 100%;
+  height: 200px; /* Default height for large screens */
+  object-fit: cover;
+  border-bottom: 2px solid #8bc34a; /* Using a green from the image */
+}
+
+.event-card-body {
+  padding: 15px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.event-card h6 {
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-size: 1.05rem;
+}
+
+.event-card p {
+  margin: 3px 0;
+  font-size: 0.9rem;
+}
+
+.event-card a {
+  text-decoration: none;
+  color: #0d6efd;
+}
+
+/* Responsive Grid */
+@media (max-width: 1200px) {
+  .event-card img {
+    height: 180px;
+  }
+}
+
+@media (max-width: 768px) {
+  .event-card img {
+    height: 200px; /* UPDATED: Increased height for tablets */
+  }
+}
+
+@media (max-width: 576px) {
+  .event-card img {
+    height: 280px; /* UPDATED: Increased height for phones */
+  }
+
+  .event-card h6 {
+    font-size: 1rem; /* UPDATED: Adjusted font size */
+    font-weight: 700; /* UPDATED: Made title bolder on mobile */
+  }
+
+  .event-card p {
+    font-size: 0.85rem;
+  }
+}
+
+/* event page CSS end /////////////////////   */
+
+/* ============================================
+   RETAILERS SECTION start
+   Scoped with #retailers-section
+   ============================================ */
+
+#retailers-section {
+  font-family: 'Raleway', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+#retailers-section  h1.section-title {
+    font-weight:lighter;
+    font-size: 2.8rem;
+    letter-spacing: 4px;
+    text-align: center;
+    color: #9e8844;
+    text-transform: uppercase;
+
+}
+/* Section Titles */
+#retailers-section h2.section-title {
+  text-transform: uppercase;
+  text-align: center;
+  color: #9e8844;
+  margin: 2rem 0 1rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+/* Retailer Cards */
+#retailers-section .retailer-card {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+#retailers-section .name{
+  color: #9e8844;
+    font-weight:50;
+}
+
+#retailers-section .retailer-card img {
+  max-height: 180px;
+  max-width: 200px;
+  margin-bottom: 0.75rem;
+  object-fit: contain;
+}
+
+#retailers-section .retailer-card p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+#retailers-section .retailer-card .name {
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  #retailers-section .retailer-card img {
+    max-height: 200px;
+    max-width: 200px;
+  }
+}
+
+/* ============================================
+   RETAILERS SECTION end
+   Scoped with #retailers-section
+   ============================================ */
